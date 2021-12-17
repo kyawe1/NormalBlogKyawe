@@ -1,0 +1,20 @@
+﻿@model BlogProject.Models.ViewModels.CustomBlogCreateViewModel
+
+
+<form asp-action="Create" asp-controller="User" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="p-2">
+        <label asp-for="header" class="form-label">Header</label>
+        <input asp-for="header" class="form-control" />
+    </div>
+    <div class="p-2">
+        <label asp-for="body" class="form-label">Body</label>
+        <input asp-for="body" class="form-control" />
+    </div>
+    <div class="p-2">
+        <label asp-for="image" class="form-label">Image</label>
+        <input asp-for="image" class="form-control" />
+    </div>
+    <input type="submit" value="Create" class='btn btn-primary' />
+</form>

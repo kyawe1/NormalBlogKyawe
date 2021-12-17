@@ -1,0 +1,15 @@
+﻿@model BlogProject.Models.Entity.BlogCategory
+
+<form asp-action="create" asp-controller="BlogCategory" method="post">
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    <div>
+        <label asp-for="BlogId">Blog Id</label>
+        <input asp-for="BlogId" />
+    </div>
+    <div>
+        <label asp-for="CategoryId">Category Id</label>
+        <input asp-for="CategoryId" />
+    </div>
+    <input type="submit" class='btn-primary btn'/>
+</form>

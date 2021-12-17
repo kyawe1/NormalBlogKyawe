@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BlogProject.Models.Entity.BlogCategory>
+
+<table>
+    <tr>
+        <td>
+            Blog Id
+        </td>
+        <td>
+            Category Id
+        </td>
+    </tr>
+    @foreach(var i in Model)
+    {
+        <tr>
+            <td>
+                @i.BlogId
+            </td>
+            <td>
+                @i.CategoryId
+            </td>
+        </tr>
+    }
+</table>

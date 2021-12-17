@@ -1,0 +1,19 @@
+﻿
+@model BlogProject.Models.ViewModels.CustomBlogCreateViewModel
+
+
+<form asp-action="UserUpdateBlog" asp-controller="User" method="post">
+    <div class="p-2">
+        <label asp-for="header" class="form-label">Header</label>
+        <input asp-for="header" class="form-control" />
+    </div>
+    <div class="p-2">
+        <label asp-for="body" class="form-label">Body</label>
+        <textarea asp-for="body" class="form-control" ></textarea>
+    </div>
+    <div class="p-2">
+        <label asp-for="image" class="form-label">Image</label>
+        <input asp-for="image" class="form-control" />
+    </div>
+    <input type="submit" value="Create" class='btn btn-primary' />
+</form>

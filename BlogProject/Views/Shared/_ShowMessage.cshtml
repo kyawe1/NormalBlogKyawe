@@ -1,0 +1,23 @@
+﻿@if (TempData["success"] !=null)
+{
+    <ul>
+        <li>
+            success
+        </li>
+        <li>
+            @TempData["success"]
+        </li>
+    </ul>
+}
+else if(TempData["error"]!=null)
+{
+    <ul>
+        <li>
+            error
+        </li>
+        <li>
+            @TempData["error"]
+        </li>
+    </ul>
+    
+}

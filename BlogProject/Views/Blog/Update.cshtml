@@ -1,0 +1,12 @@
+﻿@model BlogProject.Models.Entity.Blog
+@{
+}
+<form method="POST" asp-controller="Blog" asp-action="Update">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <label asp-for="header" class='form-label'>Header</label>
+    <input asp-for="header" class='form-control'/>
+    <label asp-for="body" class='form-label'>Body</label>
+    <input asp-for="body" class='form-control'/>
+    <input type='submit'  value="Create" class='btn btn-primary'/>
+</form>

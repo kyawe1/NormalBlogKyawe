@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BlogProject.Models.Entity.Category>
+@{
+}
+
+<table>
+    <tr>
+        <td>
+            Category Name
+        </td>
+        <td>
+            Description
+        </td>
+    </tr>
+    @foreach(var i in Model)
+    {
+        <tr>
+            <td>
+                @i.CategoryName
+            </td>
+            <td>
+                @i.Description
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,31 @@
+﻿@model BlogProject.Models.Entity.Blog
+
+@{
+    ViewBag.BlogId = Model.Id;
+}
+
+<div class="jumbotron">
+        <div class='m-2 p-2'>
+            @Model.header
+        </div>
+        <p class='p-2'>
+            @Model.body
+        </p>
+        @foreach(var q in Model.pictures)
+        {
+            <img src=@q.getImage() />
+        }
+</div>
+@if(Model.comments!=null || Model.comments.Count != 0)
+{
+    @foreach(var i in Model.comments)
+    {
+        <div>
+            @i.Name
+        </div>
+        <div>
+            @i.CommentBody
+        </div>
+    }
+}
+<partial name='_CommentPartial' />

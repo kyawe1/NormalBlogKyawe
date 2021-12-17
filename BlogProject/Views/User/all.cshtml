@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BlogProject.Models.Entity.Blog>
+
+@foreach (var i in Model)
+{
+    <div class="jumbotron">
+        <div class='m-2 p-2'>
+            @i.header
+        </div>
+        <p class='p-2'>
+            @i.body
+        </p>
+        @foreach(var q in i.pictures)
+        {
+            <img src=@q.getImage() />
+        }
+    </div>
+}

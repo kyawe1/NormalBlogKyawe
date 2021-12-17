@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BlogProject.Models.Entity.Comment>
+@{
+}
+
+<table>
+    <tr>
+        <td>
+            User Name
+        </td>
+        <td>
+            CommentBody
+        </td>
+        <td>
+            Blog Header
+        </td>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>
+                @i.Name
+            </td>
+            <td>
+                @i.CommentBody
+            </td>
+            <td>
+                @i.blog.header
+            </td>
+        </tr>
+    }
+</table>

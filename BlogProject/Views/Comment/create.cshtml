@@ -1,0 +1,20 @@
+﻿@model BlogProject.Models.Entity.Comment
+
+<form asp-action='create' method="post" asp-controller="Comment">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div>
+        <label asp-for="Name" class='form-label'>Name</label>
+        <input asp-for="Name" class='form-control'/>
+    </div>
+    <div>
+        <label asp-for="CommentBody" class='form-label'>Comment Body</label>
+        <input asp-for="CommentBody" class='form-control' />
+    </div>
+    <div>
+        <label asp-for="BlogId" class='form-label'>Blogs</label>
+        <select asp-for="BlogId" class='form-control' asp-items="ViewBag.BlogId"></select>
+    </div>
+    <input type='submit' class='btn-primary btn' />
+</form>
+
