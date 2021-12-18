@@ -1,7 +1,7 @@
-﻿
+﻿@model BlogProject.Models.ViewModels.CommentCreateViewModel
 
 <form asp-controller="User" asp-action="UserCreateComment" method='post' asp-route-id=@ViewBag.BlogId>
     <div class='m-2'>
-        <input name="CommentBody" id="CommentBody" /><input type='submit' value="comment" />
+        <input asp-for="CommentBody" /><input type='submit' value="comment" />
     </div>
 </form>

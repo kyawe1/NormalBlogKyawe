@@ -3,6 +3,7 @@ using System;
 using BlogProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BlogProject.Migrations
 {
     [DbContext(typeof(DefaultDbContext))]
-    partial class DefaultDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211218031931_three")]
+    partial class three
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,33 +213,6 @@ namespace BlogProject.Migrations
                     b.ToTable("comments");
                 });
 
-            modelBuilder.Entity("BlogProject.Models.Entity.SaveBlog", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BlogId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("created")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("saveBlogs");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -266,15 +241,15 @@ namespace BlogProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "65626073-f355-448c-9c0f-ce4a96ebe208",
-                            ConcurrencyStamp = "bc38f938-f560-438d-b0fb-a25179dd493c",
+                            Id = "2b730631-3c3f-4b28-8798-6dab592badf4",
+                            ConcurrencyStamp = "8dc851f9-7edd-4f30-8ce8-b39bd41c1599",
                             Name = "AdminStrator",
                             NormalizedName = "ADMINSTRATOR"
                         },
                         new
                         {
-                            Id = "d6104eb0-58f2-4598-a742-1cb9c29f2f6c",
-                            ConcurrencyStamp = "1a410511-55ae-4457-9178-05bac2cbce49",
+                            Id = "fedacdc0-ea26-4c95-a86e-7f05ae6e856a",
+                            ConcurrencyStamp = "d1b7300a-12a9-4f53-8e32-af8b59390d2d",
                             Name = "Normal",
                             NormalizedName = "NORMAL"
                         });
@@ -444,25 +419,6 @@ namespace BlogProject.Migrations
                     b.Navigation("User");
 
                     b.Navigation("blog");
-                });
-
-            modelBuilder.Entity("BlogProject.Models.Entity.SaveBlog", b =>
-                {
-                    b.HasOne("BlogProject.Models.Entity.Blog", "blog")
-                        .WithMany()
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BlogProject.Models.Entity.ApplicationUser", "user")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("blog");
-
-                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

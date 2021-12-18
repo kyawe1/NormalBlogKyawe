@@ -1,0 +1,15 @@
+﻿@model IEnumerable<BlogProject.Models.Entity.SaveBlog>
+
+@foreach (var i in Model)
+{
+    <h1> @i.blog.User.UserName</h1>
+    <div class="jumbotron">
+        <div class='m-2 p-2'>
+            @i.blog.header
+        </div>
+        <p class='p-2'>
+            @i.blog.body
+        </p>
+       
+    </div>
+}

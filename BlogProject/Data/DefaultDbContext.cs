@@ -35,5 +35,6 @@ namespace BlogProject.Data
         public DbSet<Category> categories { set; get; }
         public DbSet<Comment> comments { set; get; }
         public DbSet<BlogCategory> blogCategories { set; get; }
+        public DbSet<SaveBlog> saveBlogs { set; get; }
     }
 }

@@ -99,6 +99,7 @@ namespace BlogProject.Controllers
         [AllowAnonymous]
         public IActionResult detail(int id)
         {
+            ViewBag.m = new CommentCreateViewModel();
             return View(_context.blogs.Include(p=>p.comments).Include(p => p.pictures).FirstOrDefault(p=>p.Id==id));
         }
         [HttpPost,Authorize]
@@ -114,6 +115,48 @@ namespace BlogProject.Controllers
             _context.Add(m);
             await _context.SaveChangesAsync();
             return RedirectToAction("Detail", new { id=id});
+        }
+        [AllowAnonymous]
+        public IActionResult search(string? searchstring)
+        {
+            if (String.IsNullOrWhiteSpace(searchstring))
+            {
+                return NotFound();
+            }
+            var result=_context.blogs.Where(p => p.header.StartsWith(searchstring)).Include(p=>p.pictures).ToList();
+            return View("~/Views/User/all.cshtml",result);
+        }
+        [Route("[controller]/{id}/save")]
+        public async Task<IActionResult> saveBlogPost(int id)
+        {
+            var blog=_context.blogs.FirstOrDefault(p=>p.Id==id);
+            var userid=_userManager.GetUserId(User);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            var temp = new SaveBlog()
+            {
+                UserId = userid,
+                BlogId = blog.Id,
+            };
+            _context.Add(temp);
+            await _context.SaveChangesAsync();
+            return Ok(new { ok = "Created" });
+        }
+        [Route("[controller]/save/list")]
+        public IActionResult saveList()
+        {
+            var userid = _userManager.GetUserId(User);
+            var m = _context.saveBlogs.Include(p=>p.blog).Where(p=>p.UserId==userid).ToList();
+            if (m.Count > 0)
+            {
+                for (var i = 0; i < m.Count; i++)
+                {
+                    m[i].blog = _context.blogs.Include(p => p.User).FirstOrDefault(p => p.Id == m[i].blog.Id);
+                }
+            }
+            return View("~/Views/User/savelist.cshtml", m);
         }
     }
 }
